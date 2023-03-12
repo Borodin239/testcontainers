@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="2" author="e.borodin">
+        <sql>
+            create table users (
+            id bigserial not null primary key,
+            login varchar(100) not null ,
+            balance numeric NOT NULL CHECK (balance >= 0),
+            registered timestamp NOT NULL
+            );
+            ALTER TABLE users ADD CONSTRAINT unique_constraint_login_name UNIQUE (login);
+
+            create table user_stocks(
+            user_id bigserial not null references users(id),
+            stocks_id bigserial not null references stocks(id),
+            counts int not null CHECK(counts >= 0),
+            updated timestamp not null,
+            PRIMARY KEY(user_id, stocks_id));
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

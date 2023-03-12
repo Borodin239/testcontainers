@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="1" author="e.borodin">
+        <sql>
+            create table stocks (
+            id bigserial not null primary key,
+            stocks_name varchar(100) not null ,
+            market_place_provider VARCHAR(20) NOT NULL,
+            COUNTS INT NOT NULL,
+            sell_price numeric NOT NULL
+            );
+            ALTER TABLE STOCKS ADD CONSTRAINT unique_constraint_stocks_name UNIQUE (stocks_name)
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

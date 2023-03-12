@@ -1,0 +1,18 @@
+spring:
+  liquibase:
+    changeLog: classpath:/db/changelog-master.xml
+    url: jdbc:postgresql://localhost:5433/market
+    user: stocks
+    password: stocks
+  application:
+    name: server
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5433/market
+    username: stocks
+    password: stocks
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+server:
+  port: 8081

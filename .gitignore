@@ -1,0 +1,7 @@
+/.gradle/
+/build/
+/client/build/
+/server/build/
+/common/build/
+/postgres-datavolume/
+/.idea/
